@@ -7,6 +7,9 @@ public class SidePlayer : MonoBehaviour
     public Rigidbody2D body;
     public float movementForce;
     public float jumpForce;
+    public GameObject rayOrigin;
+    public float rayCheckDistance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,17 +19,23 @@ public class SidePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        if(Input.GetKey(KeyCode.LeftArrow))
         {
             body.velocity = new Vector3(-movementForce, body.velocity.y);
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             body.velocity = new Vector3(movementForce, body.velocity.y);
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
         {
             body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+    }
+
+    bool IsGrounded()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin.transform.position, Vector2.down, rayCheckDistance);
+        return hit.collider != null;
     }
 }
