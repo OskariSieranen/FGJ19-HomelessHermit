@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SidePlayer : MonoBehaviour
 {
@@ -116,6 +117,7 @@ public class SidePlayer : MonoBehaviour
         if(enemyCollision != null)
         {
             //TODO: Change scene to fight!!
+            SceneManager.LoadScene("crabfight", LoadSceneMode.Single);
         }
     }
 
@@ -143,6 +145,7 @@ public class SidePlayer : MonoBehaviour
         {
             SetNormal();
         }
+        PlayData.Health = currentHp;
         Debug.Log(string.Format("Current HP {0}", currentHp));
     }
 
