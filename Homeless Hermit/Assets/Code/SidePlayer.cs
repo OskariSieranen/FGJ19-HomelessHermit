@@ -117,7 +117,8 @@ public class SidePlayer : MonoBehaviour
         var enemyCollision = col.gameObject.GetComponent<SideEnemyBase>();
         if(enemyCollision != null)
         {
-            //TODO: Change scene to fight!!
+            PlayData.EnemyHealth = enemyCollision.health;
+            PlayData.EnemyPower = enemyCollision.power;
             SceneManager.LoadScene("crabfight", LoadSceneMode.Single);
         }
     }

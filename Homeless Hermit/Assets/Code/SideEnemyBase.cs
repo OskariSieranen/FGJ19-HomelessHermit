@@ -7,6 +7,8 @@ public abstract class SideEnemyBase : MonoBehaviour
     public SpriteRenderer sprite;
     public BoxCollider2D boxCollider;
     public Rigidbody2D body;
+    public int power = 10;
+    public int health = 30;
     public float speed;
     protected Direction direction;
 

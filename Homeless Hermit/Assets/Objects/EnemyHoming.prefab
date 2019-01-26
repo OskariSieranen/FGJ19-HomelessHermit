@@ -49,6 +49,8 @@ MonoBehaviour:
   sprite: {fileID: 109407748694374520}
   boxCollider: {fileID: 3634871536305352355}
   body: {fileID: 1771454658880575538}
+  power: 20
+  health: 60
   speed: 2
   player: {fileID: 0}
 --- !u!212 &109407748694374520
