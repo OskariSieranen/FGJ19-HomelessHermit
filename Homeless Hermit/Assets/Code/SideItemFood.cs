@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SideItemFood : SideItemBase
 {
-    public int FoodAmount;
+    public int damageModifier;
 
     // Start is called before the first frame update
     void Start()

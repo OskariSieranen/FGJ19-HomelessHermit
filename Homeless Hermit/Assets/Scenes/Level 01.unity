@@ -276,6 +276,8 @@ GameObject:
   - component: {fileID: 757306986}
   - component: {fileID: 757306985}
   - component: {fileID: 757306984}
+  - component: {fileID: 757306988}
+  - component: {fileID: 757306987}
   m_Layer: 0
   m_Name: Ground2d
   m_TagString: Untagged
@@ -307,7 +309,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 2.46}
+  m_Size: {x: 5.95562, y: 2.46}
   m_EdgeRadius: 0
 --- !u!212 &757306985
 SpriteRenderer:
@@ -371,6 +373,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &757306987
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757306983}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 8df02b60029d345448bd12ffbe719ecd, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 3.0024137, y: 1.1755342}
+  - {x: 3.0110953, y: -0.79847574}
+--- !u!68 &757306988
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757306983}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 8df02b60029d345448bd12ffbe719ecd, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -2.988905, y: -0.44359732}
+  - {x: -2.9913187, y: 1.2420735}
 --- !u!1 &1227985125
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 1227985128}
   boxCollider: {fileID: 1227985126}
-  FoodAmount: 5
+  damageModifier: -20
 --- !u!212 &1227985128
 SpriteRenderer:
   m_ObjectHideFlags: 0

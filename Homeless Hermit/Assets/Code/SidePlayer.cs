@@ -9,11 +9,15 @@ public class SidePlayer : MonoBehaviour
     public float jumpForce;
     public GameObject rayOrigin;
     public float rayCheckDistance;
+    public int initialHp;
+    private int currentHp;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (initialHp <= 0)
+            initialHp = 100;
+        currentHp = initialHp;
     }
 
     // Update is called once per frame
@@ -49,7 +53,8 @@ public class SidePlayer : MonoBehaviour
         }
         else if (pos.y < 0.0)
         {
-            //We're below the camera, initiate reset
+            //We're below the camera, initiate gameover
+            Debug.Log("TODO: Gameover!");
         }
     }
 
@@ -65,6 +70,11 @@ public class SidePlayer : MonoBehaviour
         if (itemCollision != null)
         {
             //TODO: Put item to inventory
+            if(itemCollision is SideItemFood)
+            {
+                var food = itemCollision as SideItemFood;
+                ChangeHealth(food.damageModifier);
+            }
             Destroy(col.gameObject);
         }
         var enemyCollision = col.gameObject.GetComponent<SideEnemyBase>();
@@ -72,5 +82,21 @@ public class SidePlayer : MonoBehaviour
         {
             //TODO: Change scene to fight!!
         }
+    }
+
+    private void ChangeHealth(int modifier)
+    {
+        if(currentHp + modifier > initialHp)
+        {
+            currentHp = initialHp;
+        }
+        else if(currentHp + modifier <= 0)
+        {
+            //TODO: initiate gameover
+            Debug.Log("TODO: Gameover!");
+            return;
+        }
+        currentHp += modifier;
+        Debug.Log(string.Format("Current HP {0}", currentHp));
     }
 }
