@@ -53,7 +53,6 @@ public class SideEnemyHoming : SideEnemyBase
             return Direction.Falling;
         Vector3 direction = player.transform.position - transform.position;
         float angle = Vector2.SignedAngle(direction, transform.up);
-        //print(angle);
         if(angle > 0)
             return Direction.Right;
         return Direction.Left;

@@ -11,6 +11,8 @@ public class SidePlayer : MonoBehaviour
     public float rayCheckDistance;
     public int initialHp;
     private int currentHp;
+    private BoxCollider2D boxCollider;
+    private LayerMask wallMask;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,8 @@ public class SidePlayer : MonoBehaviour
         if (initialHp <= 0)
             initialHp = 100;
         currentHp = initialHp;
+        boxCollider = GetComponent<BoxCollider2D>();
+        wallMask = LayerMask.NameToLayer("Wall");
     }
 
     // Update is called once per frame
@@ -60,8 +64,14 @@ public class SidePlayer : MonoBehaviour
 
     bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin.transform.position, Vector2.down, rayCheckDistance);
-        return hit.collider != null;
+        //Debug.Log(string.Format("y: {0}, collider_y: {1}", transform.position.y, boxCollider.transform.position.y));
+        ContactFilter2D filter = new ContactFilter2D
+        {
+            layerMask = wallMask
+        };
+        RaycastHit2D[] results = new RaycastHit2D[10];
+        int count = boxCollider.Raycast(Vector2.down, filter, results, rayCheckDistance);
+        return count > 0;
     }
 
     void OnCollisionEnter2D(Collision2D col)

@@ -100,9 +100,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -471558909
+  m_SortingLayer: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 5668ba99cca98b345892ecb28c3acd76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -188,4 +188,5 @@ MonoBehaviour:
   movementForce: 2
   jumpForce: 6
   rayOrigin: {fileID: 6527683331601636648}
-  rayCheckDistance: 0.1
+  rayCheckDistance: 0.4
+  initialHp: 100
