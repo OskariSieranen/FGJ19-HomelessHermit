@@ -5,8 +5,13 @@ using UnityEngine;
 //Idle state
 public class Player : MonoBehaviour
 {
-    public string PlayerState;
+    public string PlayerState = "Idle";
+    public bool Dodging = false;
+    public bool Blocking = false;
     public static Player singleton;
+    public KeyCode[] inputKeys;
+
+    //public string PlayerState { get => playerState; set { Debug.Log("state tset " + value); playerState = value; } }
 
     // Start is called before the first frame update
     void Awake()
@@ -24,73 +29,113 @@ public class Player : MonoBehaviour
     {
         if (PlayerState == "Idle")
         {
+
             //left punch
-            if (Input.GetKeyDown(KeyCode.Space) && !Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.UpArrow))
             {
-                fightLogic.singleton.StartPlayerAnimation(
-                     "leftPunch");
-                //goto leftpunch state
-                PlayerState = "LeftPunch";
+                if (!IsAnyOtherKeyPressed(KeyCode.Space))
+                {
+                    fightLogic.singleton.StartPlayerAnimation("leftPunch");
+                    //goto leftpunch state
+                    PlayerState = "LeftPunch";
+                    Debug.Log("State: " + PlayerState);
+                }
             }
 
             //right punch
-            if (Input.GetKeyDown(KeyCode.LeftControl) && !Input.GetKeyDown(KeyCode.UpArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftControl) && !Input.GetKey(KeyCode.UpArrow))
             {
-                fightLogic.singleton.StartPlayerAnimation(
-                     "rightPunch");
-                //goto rightpunch state
-                PlayerState = "RightPunch";
+                if (!IsAnyOtherKeyPressed(KeyCode.LeftControl))
+                {
+                    fightLogic.singleton.StartPlayerAnimation("rightPunch");
+                    //goto rightpunch state
+                    PlayerState = "RightPunch";
+                    Debug.Log("State: " + PlayerState);
+                }
             }
 
             //highpunch up+a/b
-            if (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftControl))
+            else if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftControl))
             {
-                fightLogic.singleton.StartPlayerAnimation(
-                     "highPunch");
-                //goto highpunch state
-                PlayerState = "HighPunch";
+                if (!IsAnyOtherKeyPressed(KeyCode.UpArrow))
+                {
+                    fightLogic.singleton.StartPlayerAnimation("highPunch");
+                    //goto highpunch state
+                    PlayerState = "HighPunch";
+                    Debug.Log("State: " + PlayerState);
+                }
+            }
+
+            //left/right dodge
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (!IsAnyOtherKeyPressed(KeyCode.LeftArrow))
+                {
+                    fightLogic.singleton.StartPlayerAnimation("leftDodge");
+                    PlayerState = "LeftDodge";
+                    Debug.Log("State: " + PlayerState);
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if (!IsAnyOtherKeyPressed(KeyCode.RightArrow))
+                {
+                    fightLogic.singleton.StartPlayerAnimation("rightDodge");
+                    PlayerState = "RightDodge";
+                    Debug.Log("State: " + PlayerState);
+                }
+            }
+
+            //down, block
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (!IsAnyOtherKeyPressed(KeyCode.DownArrow))
+                {
+                    fightLogic.singleton.StartPlayerAnimation("block");
+                    PlayerState = "Block";
+                    Debug.Log("State: " + PlayerState);
+                }
             }
 
             /* enterdodge
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
 
-                fightLogic.singleton.playerDodge = true;
-                fightLogic.singleton.animPlayer.SetBool("Dodge", true);
-                fightLogic.singleton.StartPlayerAnimation(
-                    "IdleDodge");
+            fightLogic.singleton.playerDodge = true;
+            fightLogic.singleton.animPlayer.SetBool("Dodge", true);
+            fightLogic.singleton.StartPlayerAnimation(
+            "IdleDodge");
             }
             // exitdodge
             if (Input.GetKeyUp(KeyCode.DownArrow))
             {
 
-                fightLogic.singleton.playerDodge = false;
-                fightLogic.singleton.animPlayer.SetBool("Dodge", false);
+            fightLogic.singleton.playerDodge = false;
+            fightLogic.singleton.animPlayer.SetBool("Dodge", false);
             }
 
             */
-            //left/right dodge
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                fightLogic.singleton.StartPlayerAnimation(
-                    "leftDodge");
-                PlayerState = "LeftDodge";
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                fightLogic.singleton.StartPlayerAnimation(
-                    "rightDodge");
-                PlayerState = "RightDodge";
-            }
-            //down, block
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                fightLogic.singleton.StartPlayerAnimation(
-                    "block");
-                PlayerState = "Block";
-            }
+        }
+    }
 
+
+    bool IsAnyOtherKeyPressed(KeyCode ignoreKey)
+    {
+        if (inputKeys == null || inputKeys.Length == 0)
+        {
+            return false;
         }
 
+        foreach (KeyCode theKey in inputKeys)
+        {
+            if (theKey != ignoreKey)
+            {
+                if (Input.GetKeyDown(theKey))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -20,6 +20,7 @@ public class rightPunch : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Player.singleton.PlayerState = "Idle";
+        Debug.Log("rightPunch finished, going " + Player.singleton.PlayerState);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
