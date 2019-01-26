@@ -11,6 +11,9 @@ public class SidePlayer : MonoBehaviour
     public float rayCheckDistance;
     public int initialHp;
     public List<SidePlayerFeet> bodyParts;
+    public List<GameObject> happy;
+    public List<GameObject> normal;
+    public List<GameObject> damaged;
     private int currentHp;
     private BoxCollider2D boxCollider;
     private LayerMask wallMask;
@@ -118,17 +121,57 @@ public class SidePlayer : MonoBehaviour
 
     private void ChangeHealth(int modifier)
     {
-        if(currentHp + modifier > initialHp)
+        if (currentHp + modifier > initialHp)
         {
             currentHp = initialHp;
         }
-        else if(currentHp + modifier <= 0)
+        else if (currentHp + modifier <= 0)
         {
             //TODO: initiate gameover
             Debug.Log("TODO: Gameover!");
             return;
         }
-        currentHp += modifier;
+        else
+        {
+            currentHp += modifier;
+        }
+        if(currentHp <= initialHp / 100d * 50d)
+        {
+            SetDamaged();
+        }
+        else
+        {
+            SetNormal();
+        }
         Debug.Log(string.Format("Current HP {0}", currentHp));
+    }
+
+    private void SetHappy()
+    {
+        SetVisible(normal, false);
+        SetVisible(damaged, false);
+        SetVisible(happy, true);
+    }
+
+    private void SetNormal()
+    {
+        SetVisible(normal, true);
+        SetVisible(damaged, false);
+        SetVisible(happy, false);
+    }
+
+    private void SetDamaged()
+    {
+        SetVisible(normal, false);
+        SetVisible(damaged, true);
+        SetVisible(happy, false);
+    }
+
+    private void SetVisible(List<GameObject> items, bool visible)
+    {
+        foreach (GameObject item in items)
+        {
+            item.SetActive(visible);
+        }
     }
 }

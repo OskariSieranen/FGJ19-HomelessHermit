@@ -14,6 +14,7 @@ public class SidePlayerFeet : MonoBehaviour
     {
         //rotationSpeed = 2f;
         rotationDirection = rotationSpeed;
+        rotationSpeed = Mathf.Abs(rotationSpeed);
     }
 
     // Update is called once per frame
@@ -28,7 +29,8 @@ public class SidePlayerFeet : MonoBehaviour
         Quaternion rotMax = Quaternion.Euler(new Vector3(0, 0, angleMax));
 
         Quaternion rotation = transform.rotation;
-        //Debug.Log(string.Format("z: {0}, min: {1} , max: {2}", rotation.z, rotMin.z, rotMax.z));
+        /*if(rotationSpeed < 0)
+            Debug.Log(string.Format("z: {0}, min: {1} , max: {2}", rotation.z, rotMin.z, rotMax.z));*/
 
         if (rotation.z <= rotMin.z)
         {
@@ -39,6 +41,7 @@ public class SidePlayerFeet : MonoBehaviour
         {
             rotationDirection = -rotationSpeed;
         }
+        
         transform.Rotate(new Vector3(0, 0, rotationDirection));
     }
 
