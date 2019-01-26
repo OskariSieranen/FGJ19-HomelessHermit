@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SideEnemyEasy01 : SideEnemyBase
 {
-    private int direction;
     private int directionSeconds;
     private float secondsElapsed;
 
@@ -21,7 +20,7 @@ public class SideEnemyEasy01 : SideEnemyBase
     {
         if(secondsElapsed > directionSeconds && direction > 0)
         {
-            direction = Random.Range(1, 3);
+            direction = (Direction)Random.Range(1, 3);
             secondsElapsed = 0;
         }
         WalkToDirection();
@@ -44,20 +43,8 @@ public class SideEnemyEasy01 : SideEnemyBase
             if (spriteRenderer != null && "Wall".Equals(spriteRenderer.sortingLayerName))
             {
                 // We hit the ground, start moving
-                direction = Random.Range(1, 3);
+                direction = (Direction)Random.Range(1, 3);
             }
-        }
-    }
-
-    void WalkToDirection()
-    {
-        if(direction == 1)
-        {
-            body.velocity = new Vector2(-speed, body.velocity.y);
-        }
-        else if (direction == 2)
-        {
-            body.velocity = new Vector2(speed, body.velocity.y);
         }
     }
 }

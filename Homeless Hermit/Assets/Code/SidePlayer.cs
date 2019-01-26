@@ -49,7 +49,7 @@ public class SidePlayer : MonoBehaviour
         }
         else if (pos.y < 0.0)
         {
-            //We're below the camera, initiate rest
+            //We're below the camera, initiate reset
         }
     }
 
@@ -66,6 +66,11 @@ public class SidePlayer : MonoBehaviour
         {
             //TODO: Put item to inventory
             Destroy(col.gameObject);
+        }
+        var enemyCollision = col.gameObject.GetComponent<SideEnemyBase>();
+        if(enemyCollision != null)
+        {
+            //TODO: Change scene to fight!!
         }
     }
 }

@@ -24,7 +24,11 @@ public class SideEnemyManager : MonoBehaviour
         {
             foreach (GameObject item in enemies)
             {
-                Vector3 p = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), 1, Camera.main.nearClipPlane));
+                SpriteRenderer renderer = item.GetComponent<SpriteRenderer>();
+                Vector3 p = Camera.main.ViewportToWorldPoint(
+                    new Vector3(Random.Range(0f, 1f), 1f,
+                    Camera.main.nearClipPlane));
+                p.y += renderer.bounds.size.y / 2;
                 Instantiate(item, p, new Quaternion());
             }
             timeElapsed = -1f;

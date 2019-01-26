@@ -8,6 +8,14 @@ public abstract class SideEnemyBase : MonoBehaviour
     public BoxCollider2D boxCollider;
     public Rigidbody2D body;
     public float speed;
+    protected Direction direction;
+
+    protected enum Direction
+    {
+        Falling = 0,
+        Left = 1, 
+        Right = 2
+    }
 
     protected void IgnoreCollisionWithItem(Collision2D col)
     {
@@ -29,5 +37,17 @@ public abstract class SideEnemyBase : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    protected void WalkToDirection()
+    {
+        if (direction == Direction.Left)
+        {
+            body.velocity = new Vector2(-speed, body.velocity.y);
+        }
+        else if (direction == Direction.Right)
+        {
+            body.velocity = new Vector2(speed, body.velocity.y);
+        }
     }
 }
