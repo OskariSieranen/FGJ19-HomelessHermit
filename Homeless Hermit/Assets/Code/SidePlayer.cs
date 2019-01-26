@@ -10,9 +10,11 @@ public class SidePlayer : MonoBehaviour
     public GameObject rayOrigin;
     public float rayCheckDistance;
     public int initialHp;
+    public List<SidePlayerFeet> bodyParts;
     private int currentHp;
     private BoxCollider2D boxCollider;
     private LayerMask wallMask;
+    private Vector3 prevPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +41,28 @@ public class SidePlayer : MonoBehaviour
         {
             body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-
+        
         PreventOutOfCamera();
+    }
+
+    void FixedUpdate()
+    {
+        if (transform.position != prevPosition)
+        {
+            MoveBodyParts();
+            prevPosition = transform.position;
+        }
+    }
+
+    void MoveBodyParts()
+    {
+        if(bodyParts != null)
+        {
+            foreach (SidePlayerFeet item in bodyParts)
+            {
+                item.Move();
+            }
+        }
     }
 
     void PreventOutOfCamera()

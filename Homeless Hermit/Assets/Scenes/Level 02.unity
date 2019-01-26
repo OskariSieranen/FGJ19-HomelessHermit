@@ -119,6 +119,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_ConnectedAnchor.x
+      value: 1.1895638
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.12913704
+      objectReference: {fileID: 0}
     - target: {fileID: 8651705572242080465, guid: 3a704c26d8751e8438d42031fa95a317,
         type: 3}
       propertyPath: m_Name
