@@ -8,7 +8,11 @@ public class Player : MonoBehaviour
     public string PlayerState = "Idle";
     public bool Dodging = false;
     public bool Blocking = false;
+
+    public bool HurtEnemy = false;
+    public bool HurtPlayer = false;
     public static Player singleton;
+    //needed?
     public KeyCode[] inputKeys;
 
     //public string PlayerState { get => playerState; set { Debug.Log("state tset " + value); playerState = value; } }
@@ -38,7 +42,7 @@ public class Player : MonoBehaviour
                     fightLogic.singleton.StartPlayerAnimation("leftPunch");
                     //goto leftpunch state
                     PlayerState = "LeftPunch";
-                    Debug.Log("State: " + PlayerState);
+                    //Debug.Log("State: " + PlayerState);
                 }
             }
 
@@ -50,7 +54,7 @@ public class Player : MonoBehaviour
                     fightLogic.singleton.StartPlayerAnimation("rightPunch");
                     //goto rightpunch state
                     PlayerState = "RightPunch";
-                    Debug.Log("State: " + PlayerState);
+                    //Debug.Log("State: " + PlayerState);
                 }
             }
 
@@ -62,7 +66,7 @@ public class Player : MonoBehaviour
                     fightLogic.singleton.StartPlayerAnimation("highPunch");
                     //goto highpunch state
                     PlayerState = "HighPunch";
-                    Debug.Log("State: " + PlayerState);
+                    //Debug.Log("State: " + PlayerState);
                 }
             }
 
@@ -73,7 +77,7 @@ public class Player : MonoBehaviour
                 {
                     fightLogic.singleton.StartPlayerAnimation("leftDodge");
                     PlayerState = "LeftDodge";
-                    Debug.Log("State: " + PlayerState);
+                    //Debug.Log("State: " + PlayerState);
                 }
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -82,7 +86,7 @@ public class Player : MonoBehaviour
                 {
                     fightLogic.singleton.StartPlayerAnimation("rightDodge");
                     PlayerState = "RightDodge";
-                    Debug.Log("State: " + PlayerState);
+                    //Debug.Log("State: " + PlayerState);
                 }
             }
 
@@ -93,7 +97,7 @@ public class Player : MonoBehaviour
                 {
                     fightLogic.singleton.StartPlayerAnimation("block");
                     PlayerState = "Block";
-                    Debug.Log("State: " + PlayerState);
+                    //Debug.Log("State: " + PlayerState);
                 }
             }
 
@@ -116,6 +120,7 @@ public class Player : MonoBehaviour
 
             */
         }
+
     }
 
 

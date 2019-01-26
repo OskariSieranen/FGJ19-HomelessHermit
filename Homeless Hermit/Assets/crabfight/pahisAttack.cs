@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class leftPunch : StateMachineBehaviour
+public class pahisAttack : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -19,9 +19,10 @@ public class leftPunch : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Player.singleton.PlayerState = "Idle";
-        fightLogic.singleton.EnemyEnteredHurtState = false;
-        //Debug.Log("leftPunch finished, going " + Player.singleton.PlayerState);
+        pahisAI.singleton.PahisState = "Idle";
+        pahisAI.singleton.animPahis.Play("pahisIdle", 0);
+        //fightLogic.singleton.EnemyEnteredHurtState = false;
+        pahisAI.singleton.HurtPlayer = true;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

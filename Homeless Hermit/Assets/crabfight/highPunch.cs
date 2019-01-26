@@ -20,7 +20,8 @@ public class highPunch : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Player.singleton.PlayerState = "Idle";
-        Debug.Log("highPunch finished, going " + Player.singleton.PlayerState);
+        fightLogic.singleton.EnemyEnteredHurtState = false;
+        //Debug.Log("highPunch finished, going " + Player.singleton.PlayerState);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

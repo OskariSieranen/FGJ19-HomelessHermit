@@ -20,7 +20,7 @@ public class leftDodge : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Player.singleton.PlayerState = "Idle";
-        Debug.Log("leftDodge finished, going " + Player.singleton.PlayerState);
+        //Debug.Log("leftDodge finished, going " + Player.singleton.PlayerState);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
