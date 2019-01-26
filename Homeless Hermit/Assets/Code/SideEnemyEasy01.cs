@@ -19,12 +19,13 @@ public class SideEnemyEasy01 : SideEnemyBase
     // Update is called once per frame
     void Update()
     {
-        if(secondsElapsed > directionSeconds)
+        if(secondsElapsed > directionSeconds && direction > 0)
         {
             direction = Random.Range(1, 3);
             secondsElapsed = 0;
         }
         WalkToDirection();
+        RemoveIfOutsideScreen();
 
         secondsElapsed += Time.deltaTime;
     }
@@ -36,6 +37,7 @@ public class SideEnemyEasy01 : SideEnemyBase
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        IgnoreCollisionWithItem(col);
         if (direction == 0)
         {
             var spriteRenderer = col.gameObject.GetComponent<SpriteRenderer>();
@@ -44,10 +46,6 @@ public class SideEnemyEasy01 : SideEnemyBase
                 // We hit the ground, start moving
                 direction = Random.Range(1, 3);
             }
-        }
-        else
-        {
-            IgnoreCollisionWithItem(col);
         }
     }
 

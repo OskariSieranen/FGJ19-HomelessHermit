@@ -186,6 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 5426939501410738891}
   movementForce: 2
-  jumpForce: 4
+  jumpForce: 6
   rayOrigin: {fileID: 6527683331601636648}
   rayCheckDistance: 0.1

@@ -18,4 +18,16 @@ public abstract class SideEnemyBase : MonoBehaviour
             Physics2D.IgnoreCollision(itemCollision.boxCollider, boxCollider, true);
         }
     }
+
+    protected bool RemoveIfOutsideScreen()
+    {
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        if (pos.y < 0.0)
+        {
+            //We're below the camera, destory
+            Destroy(this);
+            return true;
+        }
+        return false;
+    }
 }
