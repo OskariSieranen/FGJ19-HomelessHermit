@@ -85,6 +85,7 @@ public class SidePlayer : MonoBehaviour
         {
             //We're below the camera, initiate gameover
             Debug.Log("TODO: Gameover!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
