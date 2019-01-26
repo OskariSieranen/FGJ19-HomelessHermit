@@ -6,14 +6,13 @@ public class SidePlayerFeet : MonoBehaviour
 {
     public float angleMin;
     public float angleMax;
-    //private float currentAngle;
     public float rotationSpeed;
     private float rotationDirection;
 
     // Start is called before the first frame update
     void Start()
     {
-        rotationSpeed = 2f;
+        //rotationSpeed = 2f;
         rotationDirection = rotationSpeed;
     }
 
