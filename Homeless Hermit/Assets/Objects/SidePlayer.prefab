@@ -1552,7 +1552,7 @@ MonoBehaviour:
   movementForce: 2
   jumpForce: 6
   rayOrigin: {fileID: 6527683331601636648}
-  rayCheckDistance: 1
+  rayCheckDistance: 3
   initialHp: 100
   bodyParts:
   - {fileID: 278473120990991652}
