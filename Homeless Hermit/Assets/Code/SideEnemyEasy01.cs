@@ -45,6 +45,10 @@ public class SideEnemyEasy01 : SideEnemyBase
                 direction = Random.Range(1, 3);
             }
         }
+        else
+        {
+            IgnoreCollisionWithItem(col);
+        }
     }
 
     void WalkToDirection()

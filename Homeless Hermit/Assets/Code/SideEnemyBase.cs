@@ -9,4 +9,13 @@ public abstract class SideEnemyBase : MonoBehaviour
     public Rigidbody2D body;
     public float speed;
 
+    protected void IgnoreCollisionWithItem(Collision2D col)
+    {
+        var itemCollision = col.gameObject.GetComponent<SideItemBase>();
+        if (itemCollision != null)
+        {
+            // Ignore collision with items
+            Physics2D.IgnoreCollision(itemCollision.boxCollider, boxCollider, true);
+        }
+    }
 }
