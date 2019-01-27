@@ -10,6 +10,7 @@ public class fightLogic : MonoBehaviour
     public int ReturnScene;
     public static fightLogic singleton;
     public Animator animPlayer;
+    public GameObject[] enemies;
 
     //Health related
     public int PlayerHealthMax;
@@ -55,6 +56,8 @@ public class fightLogic : MonoBehaviour
 
         ReturnScene = PlayData.CurrentScene;
 
+        //load prefab enemy from list based on scene
+        //Instantiate(enemies[ReturnScene]);
 
         /*//DEBUG delete later
         PlayerHealthMax = 20;
