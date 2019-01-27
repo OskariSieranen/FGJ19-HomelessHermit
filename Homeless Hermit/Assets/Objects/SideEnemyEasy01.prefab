@@ -49,7 +49,10 @@ MonoBehaviour:
   sprite: {fileID: 8693037463753162340}
   boxCollider: {fileID: 40631792758457424}
   body: {fileID: 562103911468128955}
+  power: 10
+  health: 30
   speed: 0.5
+  nextShell: 2
 --- !u!212 &8693037463753162340
 SpriteRenderer:
   m_ObjectHideFlags: 0
