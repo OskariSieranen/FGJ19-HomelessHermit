@@ -132,7 +132,6 @@ public class SidePlayer : MonoBehaviour
             PlayData.EnemyHealth = enemyCollision.health;
             PlayData.EnemyPower = enemyCollision.power;
             PlayData.NextShell = enemyCollision.nextShell;
-            Debug.Log("Enemy HP on collision: " + enemyCollision.health);
             //SceneManager.LoadScene("crabfight", LoadSceneMode.Single);
 
             //Transition with TransitionKit

@@ -6,6 +6,7 @@ using Prime31.TransitionKit;
 
 public class MenuScript : MonoBehaviour
 {
+    private AudioSource source;
     public int SceneNumberOfFirstScene;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,8 @@ public class MenuScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
+            source = Camera.main.GetComponent<AudioSource>();
+            source.Play();
             //Transition with TransitionKit
             var rip = new SquaresTransition()
             {
