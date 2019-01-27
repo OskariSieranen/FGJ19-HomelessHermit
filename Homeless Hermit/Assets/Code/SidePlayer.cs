@@ -34,6 +34,10 @@ public class SidePlayer : MonoBehaviour
         PlayData.HealthMax = initialHp;
         boxCollider = GetComponent<BoxCollider2D>();
         wallMask = LayerMask.NameToLayer("Wall");
+        if(PlayData.NextShell >= 0)
+        {
+            SetShell(PlayData.NextShell);
+        }
 
         source = GetComponent<AudioSource>();
     }
@@ -127,6 +131,7 @@ public class SidePlayer : MonoBehaviour
         {
             PlayData.EnemyHealth = enemyCollision.health;
             PlayData.EnemyPower = enemyCollision.power;
+            PlayData.NextShell = enemyCollision.nextShell;
             Debug.Log("Enemy HP on collision: " + enemyCollision.health);
             //SceneManager.LoadScene("crabfight", LoadSceneMode.Single);
 
@@ -187,6 +192,17 @@ public class SidePlayer : MonoBehaviour
         SetVisible(normal, false);
         SetVisible(damaged, true);
         SetVisible(happy, false);
+    }
+
+    private void SetShell(int index)
+    {
+        if (index < 0 || index >= shells.Count)
+        {
+            Debug.LogError("Index ouf of range in SetShell!");
+            return;
+        }
+        SetVisible(shells, false);
+        shells[index].SetActive(true);
     }
 
     private void SetVisible(List<GameObject> items, bool visible)
