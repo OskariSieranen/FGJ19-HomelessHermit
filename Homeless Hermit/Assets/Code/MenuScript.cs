@@ -11,7 +11,8 @@ public class MenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        source = Camera.main.GetComponent<AudioSource>();
+        source.Play();
     }
 
     // Update is called once per frame
@@ -19,8 +20,7 @@ public class MenuScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            source = Camera.main.GetComponent<AudioSource>();
-            source.Play();
+
             //Transition with TransitionKit
             var rip = new SquaresTransition()
             {
