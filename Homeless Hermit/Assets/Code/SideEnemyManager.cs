@@ -24,7 +24,7 @@ public class SideEnemyManager : MonoBehaviour
         {
             foreach (GameObject item in enemies)
             {
-                SpriteRenderer renderer = item.GetComponent<SpriteRenderer>();
+                BoxCollider2D renderer = item.GetComponent<BoxCollider2D>();
                 Vector3 p = Camera.main.ViewportToWorldPoint(
                     new Vector3(Random.Range(0.1f, 0.9f), 1f,
                     Camera.main.nearClipPlane));

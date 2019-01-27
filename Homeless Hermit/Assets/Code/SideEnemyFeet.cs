@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SidePlayerFeet : MonoBehaviour
+public class SideEnemyFeet : MonoBehaviour
 {
     public float angleMin;
     public float angleMax;
     public float rotationSpeed = 2f;
+    public float enabledState = 1;
     private float rotationDirection;
+    private int state = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +21,18 @@ public class SidePlayerFeet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(state >= enabledState)
+        {
+            Move();
+        }        
     }
 
-    public void Move()
+    public void Enable(int newState)
+    {
+        state = newState;
+    }
+
+    private void Move()
     {
         Quaternion rotMin = Quaternion.Euler(new Vector3(0, 0, angleMin));
         Quaternion rotMax = Quaternion.Euler(new Vector3(0, 0, angleMax));
@@ -40,8 +50,7 @@ public class SidePlayerFeet : MonoBehaviour
         {
             rotationDirection = -rotationSpeed;
         }
-        
+
         transform.Rotate(new Vector3(0, 0, rotationDirection));
     }
-
 }

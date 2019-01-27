@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SideEnemyHoming : SideEnemyBase
 {
     public GameObject player;
     private float secondsElapsed;
+    public List<SideEnemyFeet> bodyParts;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,7 @@ public class SideEnemyHoming : SideEnemyBase
         {
             player = GameObject.Find("SidePlayer");
         }
+        bodyParts.ForEach(e => e.Enable(1));
     }
 
     // Update is called once per frame
@@ -42,6 +45,7 @@ public class SideEnemyHoming : SideEnemyBase
             {
                 // We hit the ground, start moving
                 direction = GetPlayerDirection();
+                bodyParts.ForEach(e => e.Enable(2));
                 secondsElapsed = 0;
             }
         }

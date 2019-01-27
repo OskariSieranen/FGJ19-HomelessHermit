@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class SideEnemyBase : MonoBehaviour
 {
-    public SpriteRenderer sprite;
     public BoxCollider2D boxCollider;
     public Rigidbody2D body;
     public int power = 10;
