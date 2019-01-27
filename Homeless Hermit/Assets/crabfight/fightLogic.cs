@@ -7,17 +7,17 @@ using Prime31.TransitionKit;
 
 public class fightLogic : MonoBehaviour
 {
-    public int ReturnScene = PlayData.CurrentScene;
+    public int ReturnScene;
     public static fightLogic singleton;
     public Animator animPlayer;
 
     //Health related
-    public int PlayerHealthMax = PlayData.Health;
-    public int EnemyHealthMax = PlayData.EnemyHealth;
-    public int PlayerHealth = PlayData.Health;
-    public int EnemyHealth = PlayData.EnemyHealth;
-    public int PlayerPower = PlayData.Power;
-    public int EnemyPower = PlayData.EnemyPower;
+    public int PlayerHealthMax;
+    public int EnemyHealthMax;
+    public int PlayerHealth;
+    public int EnemyHealth;
+    public int PlayerPower;
+    public int EnemyPower;
 
     public bool EnemyEnteredHurtState = false;
 
@@ -53,8 +53,9 @@ public class fightLogic : MonoBehaviour
         }
         singleton = this;
 
-        Debug.Log("Player HP: " + PlayerHealthMax);
-        Debug.Log("Enemy HP: " + EnemyHealthMax);
+        ReturnScene = PlayData.CurrentScene;
+
+
         /*//DEBUG delete later
         PlayerHealthMax = 20;
         PlayerHealth = 20;
@@ -63,6 +64,15 @@ public class fightLogic : MonoBehaviour
         EnemyHealth = 1;
         EnemyPower = 1;
         */
+
+        //Health related
+        PlayerHealthMax = PlayData.Health;
+        EnemyHealthMax = PlayData.EnemyHealth;
+        PlayerHealth = PlayData.Health;
+        EnemyHealth = PlayData.EnemyHealth;
+        PlayerPower = PlayData.Power;
+        EnemyPower = PlayData.EnemyPower;
+
         //set health bars
         PlayerHealthSlider.value = 0;
         EnemyHealthSlider.value = 0;
@@ -98,11 +108,11 @@ public class fightLogic : MonoBehaviour
                 case 1:
                     if (PlayerHealthSlider.value != PlayerHealthSlider.maxValue)
                     {
-                        PlayerHealthSlider.value += 0.25f;
+                        PlayerHealthSlider.value += 1f;
                     }
                     if (EnemyHealthSlider.value != EnemyHealthSlider.maxValue)
                     {
-                        EnemyHealthSlider.value += 0.25f;
+                        EnemyHealthSlider.value += 1f;
 
                     }
                     if (PlayerHealthSlider.value == PlayerHealthSlider.maxValue && EnemyHealthSlider.value == EnemyHealthSlider.maxValue)
