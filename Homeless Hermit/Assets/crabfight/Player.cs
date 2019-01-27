@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public static Player singleton;
     //needed?
     public KeyCode[] inputKeys;
+    public List<GameObject> shells;
 
     public AudioClip[] dodgeSound;
     public AudioClip dodgeClip;
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
             return;
         }
         singleton = this;
-
+        SetShell(PlayData.CurrentShell);
         source = GetComponent<AudioSource>();
     }
 
@@ -121,5 +122,24 @@ public class Player : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void SetShell(int index)
+    {
+        if (index < 0 || index >= shells.Count)
+        {
+            Debug.LogError("Index ouf of range in SetShell!");
+            return;
+        }
+        SetVisible(shells, false);
+        shells[index].SetActive(true);
+    }
+
+    private void SetVisible(List<GameObject> items, bool visible)
+    {
+        foreach (GameObject item in items)
+        {
+            item.SetActive(visible);
+        }
     }
 }

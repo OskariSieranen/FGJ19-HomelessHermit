@@ -131,6 +131,7 @@ public class SidePlayer : MonoBehaviour
         {
             PlayData.EnemyHealth = enemyCollision.health;
             PlayData.EnemyPower = enemyCollision.power;
+            PlayData.CurrentShell = GetActiveShell();
             PlayData.NextShell = enemyCollision.nextShell;
             //SceneManager.LoadScene("crabfight", LoadSceneMode.Single);
 
@@ -202,6 +203,16 @@ public class SidePlayer : MonoBehaviour
         }
         SetVisible(shells, false);
         shells[index].SetActive(true);
+    }
+
+    private int GetActiveShell()
+    {
+        for (int i = 0; i < shells.Count; i++)
+        {
+            if (shells[i].activeSelf)
+                return i;
+        }
+        return 0;
     }
 
     private void SetVisible(List<GameObject> items, bool visible)

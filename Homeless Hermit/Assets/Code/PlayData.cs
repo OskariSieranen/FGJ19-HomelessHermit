@@ -11,5 +11,6 @@ public static class PlayData
     public static int EnemyPower { get; set; }
     public static int CurrentScene { get; set; }
     public static string NextScene { get; set; }
+    public static int CurrentShell { get; set; }
     public static int NextShell { get; set; }
 }
