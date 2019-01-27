@@ -26,7 +26,7 @@ public class SideEnemyManager : MonoBehaviour
             {
                 SpriteRenderer renderer = item.GetComponent<SpriteRenderer>();
                 Vector3 p = Camera.main.ViewportToWorldPoint(
-                    new Vector3(Random.Range(0f, 1f), 1f,
+                    new Vector3(Random.Range(0.1f, 0.9f), 1f,
                     Camera.main.nearClipPlane));
                 p.y += renderer.bounds.size.y / 2;
                 Instantiate(item, p, new Quaternion());
