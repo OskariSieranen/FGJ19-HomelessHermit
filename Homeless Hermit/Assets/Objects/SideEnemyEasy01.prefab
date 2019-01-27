@@ -52,7 +52,7 @@ MonoBehaviour:
   power: 10
   health: 30
   speed: 0.5
-  nextShell: 2
+  nextShell: 1
 --- !u!212 &8693037463753162340
 SpriteRenderer:
   m_ObjectHideFlags: 0
