@@ -11,8 +11,7 @@ public class MenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        source = Camera.main.GetComponent<AudioSource>();
-        source.Play();
+
     }
 
     // Update is called once per frame
