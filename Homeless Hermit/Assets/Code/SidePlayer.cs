@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Prime31.TransitionKit;
 
 public class SidePlayer : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class SidePlayer : MonoBehaviour
     private LayerMask wallMask;
     private Vector3 prevPosition;
 
+    private AudioSource source;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,8 @@ public class SidePlayer : MonoBehaviour
         currentHp = initialHp;
         boxCollider = GetComponent<BoxCollider2D>();
         wallMask = LayerMask.NameToLayer("Wall");
+
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -119,7 +124,15 @@ public class SidePlayer : MonoBehaviour
         {
             PlayData.EnemyHealth = enemyCollision.health;
             PlayData.EnemyPower = enemyCollision.power;
-            SceneManager.LoadScene("crabfight", LoadSceneMode.Single);
+            //SceneManager.LoadScene("crabfight", LoadSceneMode.Single);
+
+            //Transition with TransitionKit
+            var wind = new WindTransition()
+            {
+                nextScene = 2,
+                duration = 1.5f
+            };
+            TransitionKit.instance.transitionWithDelegate(wind);
         }
     }
 

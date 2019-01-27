@@ -7,9 +7,11 @@ public class pahisAI : MonoBehaviour
     public bool HurtPlayer = false;
     public bool Shield = false;
     public static pahisAI singleton;
-    //Attack, Block, Idle
+    //States:Attack, Block, Idle
     public string PahisState;
+    //attack frequency
     public int Aggressiveness;
+    //delay between attacks
     public float attackPeriod;
     public Animator animPahis;
     private bool delayed = false;
@@ -35,24 +37,18 @@ public class pahisAI : MonoBehaviour
             {
                 animPahis.Play("pahisBlock", 0);
                 PahisState = "Block";
-                Debug.Log("play enemy block anim");
             }
 
         }
         //if state = block, decide weather to attack or not
         else if (PahisState == "Block" && !delayed)
         {
+            //Idle before attacking
             StartCoroutine(Delay());
             //attack?
             bool attack = Random.Range(0, 100) < Aggressiveness;
             if (attack)
             {
-                //Idle before attacking
-                //animPahis.Play("pahisIdle", 0);
-                //Debug.Log("play enemy idle anim");
-                //Delay();
-
-                Debug.Log("enemy preps attack");
                 PahisState = "Attack";
                 animPahis.Play("pahisPrepAttack");
             }
@@ -62,7 +58,6 @@ public class pahisAI : MonoBehaviour
         {
             //trigger attack
             StartCoroutine(Delay());
-            Debug.Log("enemy attacks!");
             animPahis.Play("pahisAttack", 0);
         }
     }

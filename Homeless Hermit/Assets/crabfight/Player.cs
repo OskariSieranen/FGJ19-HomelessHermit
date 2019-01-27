@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Idle state
 public class Player : MonoBehaviour
 {
-    public string PlayerState = "Idle";
+    public string PlayerState;
     public bool Dodging = false;
     public bool Blocking = false;
 
@@ -15,7 +14,9 @@ public class Player : MonoBehaviour
     //needed?
     public KeyCode[] inputKeys;
 
-    //public string PlayerState { get => playerState; set { Debug.Log("state tset " + value); playerState = value; } }
+    public AudioClip[] dodgeSound;
+    public AudioClip dodgeClip;
+    private AudioSource source;
 
     // Start is called before the first frame update
     void Awake()
@@ -26,23 +27,23 @@ public class Player : MonoBehaviour
             return;
         }
         singleton = this;
+
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //pause until intro is done
         if (PlayerState == "Idle")
         {
-
             //left punch
             if (Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.UpArrow))
             {
                 if (!IsAnyOtherKeyPressed(KeyCode.Space))
                 {
                     fightLogic.singleton.StartPlayerAnimation("leftPunch");
-                    //goto leftpunch state
                     PlayerState = "LeftPunch";
-                    //Debug.Log("State: " + PlayerState);
                 }
             }
 
@@ -52,21 +53,18 @@ public class Player : MonoBehaviour
                 if (!IsAnyOtherKeyPressed(KeyCode.LeftControl))
                 {
                     fightLogic.singleton.StartPlayerAnimation("rightPunch");
-                    //goto rightpunch state
                     PlayerState = "RightPunch";
-                    //Debug.Log("State: " + PlayerState);
                 }
             }
 
             //highpunch up+a/b
+            //TODO: lasers etc.
             else if (Input.GetKey(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftControl))
             {
                 if (!IsAnyOtherKeyPressed(KeyCode.UpArrow))
                 {
                     fightLogic.singleton.StartPlayerAnimation("highPunch");
-                    //goto highpunch state
                     PlayerState = "HighPunch";
-                    //Debug.Log("State: " + PlayerState);
                 }
             }
 
@@ -77,7 +75,7 @@ public class Player : MonoBehaviour
                 {
                     fightLogic.singleton.StartPlayerAnimation("leftDodge");
                     PlayerState = "LeftDodge";
-                    //Debug.Log("State: " + PlayerState);
+                    source.PlayOneShot(dodgeSound[Random.Range(0, dodgeSound.Length)]);
                 }
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -86,7 +84,7 @@ public class Player : MonoBehaviour
                 {
                     fightLogic.singleton.StartPlayerAnimation("rightDodge");
                     PlayerState = "RightDodge";
-                    //Debug.Log("State: " + PlayerState);
+                    source.PlayOneShot(dodgeSound[Random.Range(0, dodgeSound.Length)]);
                 }
             }
 
@@ -97,33 +95,14 @@ public class Player : MonoBehaviour
                 {
                     fightLogic.singleton.StartPlayerAnimation("block");
                     PlayerState = "Block";
-                    //Debug.Log("State: " + PlayerState);
+                    source.PlayOneShot(dodgeSound[Random.Range(0, dodgeSound.Length)]);
                 }
             }
-
-            /* enterdodge
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-
-            fightLogic.singleton.playerDodge = true;
-            fightLogic.singleton.animPlayer.SetBool("Dodge", true);
-            fightLogic.singleton.StartPlayerAnimation(
-            "IdleDodge");
-            }
-            // exitdodge
-            if (Input.GetKeyUp(KeyCode.DownArrow))
-            {
-
-            fightLogic.singleton.playerDodge = false;
-            fightLogic.singleton.animPlayer.SetBool("Dodge", false);
-            }
-
-            */
         }
 
     }
 
-
+    //is this check needed?
     bool IsAnyOtherKeyPressed(KeyCode ignoreKey)
     {
         if (inputKeys == null || inputKeys.Length == 0)
