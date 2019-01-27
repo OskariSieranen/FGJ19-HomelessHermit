@@ -119,6 +119,10 @@ public class SidePlayer : MonoBehaviour
         if (itemCollision != null)
         {
             //TODO: Put item to inventory
+            if (itemCollision.audio)
+            {
+                source.PlayOneShot(itemCollision.audio);
+            }
             if(itemCollision is SideItemFood)
             {
                 var food = itemCollision as SideItemFood;

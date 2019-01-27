@@ -6,4 +6,5 @@ public abstract class SideItemBase : MonoBehaviour
 {
     public SpriteRenderer sprite;
     public BoxCollider2D boxCollider;
+    public AudioClip audio;
 }
