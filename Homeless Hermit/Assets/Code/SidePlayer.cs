@@ -11,7 +11,7 @@ public class SidePlayer : MonoBehaviour
     public float jumpForce;
     public GameObject rayOrigin;
     public float rayCheckDistance;
-    public int initialHp;
+    public int initialHp = 100;
     public List<SidePlayerFeet> bodyParts;
     public List<GameObject> happy;
     public List<GameObject> normal;
@@ -29,6 +29,7 @@ public class SidePlayer : MonoBehaviour
         if (initialHp <= 0)
             initialHp = 100;
         currentHp = initialHp;
+        PlayData.HealthMax = initialHp;
         boxCollider = GetComponent<BoxCollider2D>();
         wallMask = LayerMask.NameToLayer("Wall");
 

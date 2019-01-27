@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class PlayData
 {
+    public static int HealthMax { get; set; }
     public static int Health { get; set; }
     public static int Power { get; set; }
     public static int EnemyHealth { get; set; }
