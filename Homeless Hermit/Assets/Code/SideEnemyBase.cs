@@ -10,6 +10,7 @@ public abstract class SideEnemyBase : MonoBehaviour
     public int power = 10;
     public int health = 30;
     public float speed;
+    public int nextShell = 1;
     protected Direction direction;
 
     protected enum Direction

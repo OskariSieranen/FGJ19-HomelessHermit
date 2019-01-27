@@ -13,6 +13,7 @@ public class SidePlayer : MonoBehaviour
     public float rayCheckDistance;
     public int initialHp = 100;
     public List<SidePlayerFeet> bodyParts;
+    public List<GameObject> shells;
     public List<GameObject> happy;
     public List<GameObject> normal;
     public List<GameObject> damaged;

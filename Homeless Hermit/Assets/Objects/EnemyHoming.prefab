@@ -52,6 +52,7 @@ MonoBehaviour:
   power: 20
   health: 60
   speed: 2
+  nextShell: 3
   player: {fileID: 0}
 --- !u!212 &109407748694374520
 SpriteRenderer:
