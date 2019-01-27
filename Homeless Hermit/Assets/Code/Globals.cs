@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Globals : MonoBehaviour
@@ -10,6 +11,7 @@ public class Globals : MonoBehaviour
     void Start()
     {
         PlayData.NextScene = NextLevel;
+        PlayData.CurrentScene = SceneManager.GetActiveScene().buildIndex;
         PlayData.Power = 10;
     }
 

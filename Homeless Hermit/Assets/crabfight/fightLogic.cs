@@ -7,7 +7,7 @@ using Prime31.TransitionKit;
 
 public class fightLogic : MonoBehaviour
 {
-    public string returnscene = PlayData.NextScene;
+    public int ReturnScene = PlayData.CurrentScene;
     public static fightLogic singleton;
     public Animator animPlayer;
 
@@ -53,14 +53,16 @@ public class fightLogic : MonoBehaviour
         }
         singleton = this;
 
-        //DEBUG delete later
+        Debug.Log("Player HP: " + PlayerHealthMax);
+        Debug.Log("Enemy HP: " + EnemyHealthMax);
+        /*//DEBUG delete later
         PlayerHealthMax = 20;
         PlayerHealth = 20;
         PlayerPower = 1;
         EnemyHealthMax = 20;
         EnemyHealth = 1;
         EnemyPower = 1;
-
+        */
         //set health bars
         PlayerHealthSlider.value = 0;
         EnemyHealthSlider.value = 0;
@@ -213,7 +215,7 @@ public class fightLogic : MonoBehaviour
         yield return new WaitForSeconds(8);
         var pixelater = new PixelateTransition()
         {
-            nextScene = 2,
+            nextScene = ReturnScene+1,
             finalScaleEffect = PixelateTransition.PixelateFinalScaleEffect.ToPoint,
             duration = 1.0f
         };

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using Prime31.TransitionKit;
 
 public class MenuScript : MonoBehaviour
 {
@@ -17,7 +18,14 @@ public class MenuScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            SceneManager.LoadScene(SceneNumberOfFirstScene);
+            //Transition with TransitionKit
+            var rip = new SquaresTransition()
+            {
+                nextScene = SceneNumberOfFirstScene,
+                duration = 1.5f
+            };
+            TransitionKit.instance.transitionWithDelegate(rip);
+            //SceneManager.LoadScene();
         }
     }
 }

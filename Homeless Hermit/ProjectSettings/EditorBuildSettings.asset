@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/Scenes/Title Screen.unity
+    guid: 15257446a67fda844982e68089bf4db4
+  - enabled: 1
     path: Assets/Scenes/Game Over Screen.unity
     guid: c4f1f958523cf214283f6ef48761fd78
   - enabled: 1
-    path: Assets/Scenes/Title Screen.unity
-    guid: 15257446a67fda844982e68089bf4db4
+    path: Assets/Scenes/crabfight.unity
+    guid: e4b2f1a49cbd1424ea4f011d128ef5be
   - enabled: 1
     path: Assets/Scenes/Level 01.unity
     guid: ccca1671fa66fb240b81ad2315335dce
   - enabled: 1
     path: Assets/Scenes/Level 02.unity
     guid: 80f51169330ecdb4ea2ad5bce4cd1b8d
-  - enabled: 1
-    path: Assets/Scenes/crabfight.unity
-    guid: e4b2f1a49cbd1424ea4f011d128ef5be
   m_configObjects: {}

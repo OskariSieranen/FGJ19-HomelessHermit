@@ -29,6 +29,7 @@ public class SidePlayer : MonoBehaviour
         if (initialHp <= 0)
             initialHp = 100;
         currentHp = initialHp;
+        PlayData.Health = currentHp;
         PlayData.HealthMax = initialHp;
         boxCollider = GetComponent<BoxCollider2D>();
         wallMask = LayerMask.NameToLayer("Wall");
@@ -125,6 +126,7 @@ public class SidePlayer : MonoBehaviour
         {
             PlayData.EnemyHealth = enemyCollision.health;
             PlayData.EnemyPower = enemyCollision.power;
+            Debug.Log("Enemy HP on collision: " + enemyCollision.health);
             //SceneManager.LoadScene("crabfight", LoadSceneMode.Single);
 
             //Transition with TransitionKit

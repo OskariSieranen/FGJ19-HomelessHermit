@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e26341b9c33c2448c98014eedd7d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnscene: 
+  ReturnScene: 0
   animPlayer: {fileID: 1667189668}
   PlayerHealthMax: 0
   EnemyHealthMax: 0

@@ -9,5 +9,6 @@ public static class PlayData
     public static int Power { get; set; }
     public static int EnemyHealth { get; set; }
     public static int EnemyPower { get; set; }
+    public static int CurrentScene { get; set; }
     public static string NextScene { get; set; }
 }
