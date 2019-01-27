@@ -1910,7 +1910,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 72a350b95253b4a4fa8dc2493704f5c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2131,21 +2131,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SidePlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 6527683331601636648, guid: 3a704c26d8751e8438d42031fa95a317,
-        type: 3}
-      propertyPath: m_Name
-      value: SidePlayerGroundCheck
-      objectReference: {fileID: 0}
-    - target: {fileID: 6527683331601636648, guid: 3a704c26d8751e8438d42031fa95a317,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7361874082896737815, guid: 3a704c26d8751e8438d42031fa95a317,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 1212696217853344602, guid: 3a704c26d8751e8438d42031fa95a317,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2215,6 +2200,21 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpForce
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527683331601636648, guid: 3a704c26d8751e8438d42031fa95a317,
+        type: 3}
+      propertyPath: m_Name
+      value: SidePlayerGroundCheck
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527683331601636648, guid: 3a704c26d8751e8438d42031fa95a317,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361874082896737815, guid: 3a704c26d8751e8438d42031fa95a317,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a704c26d8751e8438d42031fa95a317, type: 3}
