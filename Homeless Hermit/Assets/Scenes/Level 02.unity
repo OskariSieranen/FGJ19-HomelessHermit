@@ -538,6 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 1254249382}
   boxCollider: {fileID: 1254249379}
+  audio: {fileID: 8300000, guid: 22408c18b1d39294d9b8b4a1d2cb122e, type: 3}
   damageModifier: 30
 --- !u!212 &1254249382
 SpriteRenderer:
@@ -937,6 +938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 1764091581}
   boxCollider: {fileID: 1764091578}
+  audio: {fileID: 8300000, guid: 22408c18b1d39294d9b8b4a1d2cb122e, type: 3}
   damageModifier: 30
 --- !u!114 &1764091580
 MonoBehaviour:
