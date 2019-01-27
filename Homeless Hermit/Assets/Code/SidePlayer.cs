@@ -12,6 +12,7 @@ public class SidePlayer : MonoBehaviour
     public GameObject rayOrigin;
     public float rayCheckDistance;
     public int initialHp = 100;
+    public AudioClip walkClip;
     public List<SidePlayerFeet> bodyParts;
     public List<GameObject> shells;
     public List<GameObject> happy;
@@ -22,7 +23,8 @@ public class SidePlayer : MonoBehaviour
     private LayerMask wallMask;
     private Vector3 prevPosition;
 
-    private AudioSource source;
+    public AudioSource walkSource;
+    public AudioSource itemSource;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +40,6 @@ public class SidePlayer : MonoBehaviour
         {
             SetShell(PlayData.NextShell);
         }
-
-        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -65,8 +65,15 @@ public class SidePlayer : MonoBehaviour
     {
         if (transform.position != prevPosition)
         {
+            if (!walkSource.isPlaying && walkClip)
+                walkSource.PlayOneShot(walkClip);
             MoveBodyParts();
             prevPosition = transform.position;
+        }
+        else
+        {
+            if(walkSource.isPlaying)
+                walkSource.Stop();
         }
     }
 
@@ -121,7 +128,7 @@ public class SidePlayer : MonoBehaviour
             //TODO: Put item to inventory
             if (itemCollision.audio)
             {
-                source.PlayOneShot(itemCollision.audio);
+                itemSource.PlayOneShot(itemCollision.audio);
             }
             if(itemCollision is SideItemFood)
             {
