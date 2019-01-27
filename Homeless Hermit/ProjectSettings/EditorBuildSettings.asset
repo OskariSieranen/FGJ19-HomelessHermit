@@ -18,12 +18,24 @@ EditorBuildSettings:
     path: Assets/Scenes/crabfight.unity
     guid: e4b2f1a49cbd1424ea4f011d128ef5be
   - enabled: 1
+    path: Assets/Scenes/Slide 1.unity
+    guid: 2a5b00578c199ba42bda0abd3961dda9
+  - enabled: 1
     path: Assets/Scenes/Level 01.unity
     guid: ccca1671fa66fb240b81ad2315335dce
+  - enabled: 1
+    path: Assets/Scenes/Slide 2.unity
+    guid: 7f38941b28e95354f9a1f4b91b45287e
   - enabled: 1
     path: Assets/Scenes/Level 02.unity
     guid: 80f51169330ecdb4ea2ad5bce4cd1b8d
   - enabled: 1
+    path: Assets/Scenes/Slide 3.unity
+    guid: fad44e385f6388845879779ba5efb6a2
+  - enabled: 1
     path: Assets/Scenes/Level 03.unity
     guid: ebe3a5ba63be50c448c329e3d5161271
+  - enabled: 1
+    path: Assets/Scenes/Win Game Screen.unity
+    guid: d3de7940fad6c3948af12f34f5b33445
   m_configObjects: {}
